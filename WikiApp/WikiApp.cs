@@ -8,6 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// Mauriza Arianne
+/// WikiApp
+/// Displays data structures
+/// 22/03/2023
+
+
+
 namespace WikiApp
 {
     public partial class WikiApp : Form
@@ -17,9 +24,5 @@ namespace WikiApp
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

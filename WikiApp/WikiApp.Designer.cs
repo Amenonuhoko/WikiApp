@@ -219,7 +219,6 @@
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 18;
             this.label3.Text = "Category";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // WikiApp
             // 
