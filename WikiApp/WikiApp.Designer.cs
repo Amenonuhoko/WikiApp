@@ -39,16 +39,18 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.lstViewData = new System.Windows.Forms.ListView();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxStructure = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxStructure.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -59,6 +61,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -68,6 +71,7 @@
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -77,6 +81,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // radioBtnLinear
             // 
@@ -141,12 +146,25 @@
             // 
             // lstViewData
             // 
+            this.lstViewData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colCategory});
             this.lstViewData.HideSelection = false;
             this.lstViewData.Location = new System.Drawing.Point(284, 63);
             this.lstViewData.Name = "lstViewData";
-            this.lstViewData.Size = new System.Drawing.Size(186, 250);
+            this.lstViewData.Size = new System.Drawing.Size(186, 283);
             this.lstViewData.TabIndex = 10;
             this.lstViewData.UseCompatibleStateImageBehavior = false;
+            this.lstViewData.View = System.Windows.Forms.View.Details;
+            this.lstViewData.Click += new System.EventHandler(this.lstViewData_Click);
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            // 
+            // colCategory
+            // 
+            this.colCategory.Text = "Category";
             // 
             // txtBoxSearch
             // 
@@ -182,16 +200,16 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxStructure
             // 
-            this.groupBox1.Controls.Add(this.radioBtnLinear);
-            this.groupBox1.Controls.Add(this.radioBtnNonLinear);
-            this.groupBox1.Location = new System.Drawing.Point(15, 137);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(106, 66);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Structure";
+            this.groupBoxStructure.Controls.Add(this.radioBtnLinear);
+            this.groupBoxStructure.Controls.Add(this.radioBtnNonLinear);
+            this.groupBoxStructure.Location = new System.Drawing.Point(15, 137);
+            this.groupBoxStructure.Name = "groupBoxStructure";
+            this.groupBoxStructure.Size = new System.Drawing.Size(106, 66);
+            this.groupBoxStructure.TabIndex = 15;
+            this.groupBoxStructure.TabStop = false;
+            this.groupBoxStructure.Text = "Structure";
             // 
             // label1
             // 
@@ -228,7 +246,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxStructure);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnSearch);
@@ -245,8 +263,8 @@
             this.Text = "WikiApp";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxStructure.ResumeLayout(false);
+            this.groupBoxStructure.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,10 +287,12 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxStructure;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.ColumnHeader colCategory;
     }
 }
 
