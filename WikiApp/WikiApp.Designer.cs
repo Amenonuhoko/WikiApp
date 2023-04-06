@@ -111,6 +111,7 @@
             this.txtBoxName.Name = "txtBoxName";
             this.txtBoxName.Size = new System.Drawing.Size(156, 20);
             this.txtBoxName.TabIndex = 5;
+            this.txtBoxName.DoubleClick += new System.EventHandler(this.txtBoxName_DoubleClick);
             // 
             // txtBoxDefinition
             // 
@@ -181,6 +182,7 @@
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnOpen
             // 
@@ -190,6 +192,7 @@
             this.btnOpen.TabIndex = 13;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // btnSave
             // 
@@ -199,6 +202,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBoxStructure
             // 
@@ -261,6 +265,7 @@
             this.Controls.Add(this.btnAdd);
             this.Name = "WikiApp";
             this.Text = "WikiApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WikiApp_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBoxStructure.ResumeLayout(false);
