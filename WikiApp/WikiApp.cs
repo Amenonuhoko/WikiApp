@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -35,6 +36,8 @@ namespace WikiApp
         //6.2 Create a global List<T> of type Information called Wiki
         private List<Information> wiki = new List<Information>();
         private int index = -1;
+        static Stream myTraceTestFile = File.Create("testfile.txt");
+        TextWriterTraceListener myListener = new TextWriterTraceListener(myTraceTestFile);
         #endregion
 
         #region Methods
@@ -87,13 +90,16 @@ namespace WikiApp
         // Use the built in List<T> method “Exists” to answer this requirement.
         private bool ValidName(string name)
         {
+            Trace.Listeners.Add(myListener);
             // Check if the name exists
             if (wiki.Exists(x => x.GetName() == name))
             {
+                Trace.WriteLine("Not a valid name");
                 // If the name exists it is not a valid name
                 return false;
             } else
             {
+                Trace.WriteLine("Valid name");
                 // ValidName() == true
                 return true;
             }
@@ -132,12 +138,17 @@ namespace WikiApp
         // Display an updated version of the sorted list at the end of this process.
         private void DeleteItem()
         {
+            Trace.Listeners.Add(myListener);
             // Deletes an item at a selected index
             DialogResult confirmation = MessageBox.Show("Delete item?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // Make sure the index has been selected and is confirmed
             if (index != -1 && confirmation == DialogResult.Yes)
             {
+                Trace.WriteLine("Entry deleted");
                 wiki.RemoveAt(index);
+            } else
+            {
+                Trace.WriteLine("Entry could not be deleted");
             }
             // Clear input
             ClearInput();
@@ -150,6 +161,7 @@ namespace WikiApp
         // Display an updated version of the sorted list at the end of this process.
         private void EditItem()
         {
+            Trace.Listeners.Add(myListener);
             // Create new entry to replace
             Information info = new Information();
             info.SetName(txtBoxName.Text);
@@ -157,7 +169,14 @@ namespace WikiApp
             info.SetStructure(GetSelectedRadioBtn());
             info.SetDefinition(txtBoxDefinition.Text);
             // Replace at selected index
-            wiki[index] = info;
+            if(ValidName(txtBoxName.Text))
+            {
+                Trace.WriteLine("Valid edit entry");
+            }
+            else
+            {
+                Trace.WriteLine("Invalid edit entry");
+            }
             // Sort and update
             SortList();
             UpdateList();
@@ -345,6 +364,7 @@ namespace WikiApp
         // 6.15 The Wiki application will save data when the form closes. 
         private void WikiApp_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Trace.Close();
             SaveFile();
         }
         #endregion
