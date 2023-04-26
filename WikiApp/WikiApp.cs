@@ -139,6 +139,8 @@ namespace WikiApp
             {
                 wiki.RemoveAt(index);
             }
+            // Clear input
+            ClearInput();
             // Sort and update
             SortList();
             UpdateList();
